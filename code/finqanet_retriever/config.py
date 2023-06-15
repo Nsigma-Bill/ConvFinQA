@@ -5,17 +5,17 @@ class parameters():
     prog_name = "retriever"
 
     # set up your own path here
-    root_path = "your project path"
-    output_path = "your output path"
-    cache_dir = "path to store downloaded models"
+    root_path = "../../"
+    output_path = "../../result/retriever"
+    cache_dir = "../../cache"
 
     # the name of your result folder.
-    model_save_name = "retriever-roberta-large-2e-5-new-test"
+    model_save_name = "retriever-roberta-large-my-test"
 
     # use "train_turn.json", "dev_turn.json", and "test_turn.json"
     train_file = root_path + "data/train_turn.json"
     valid_file = root_path + "data/dev_turn.json"
-    test_file = root_path + "data/test_turn.json"
+    test_file = root_path + "data/test_turn_private.json"
 
     op_list_file = "operation_list.txt"
     const_list_file = "constant_list.txt"
@@ -28,8 +28,9 @@ class parameters():
     model_size = "roberta-large"
 
     # mode: train or test
-    device = "cuda"
-    mode = "test"
+    # device = "cuda"
+    device = 'cpu'
+    mode = "train"
     resume_model_path = ""
 
     ### to load the trained model in test time

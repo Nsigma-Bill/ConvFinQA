@@ -26,6 +26,10 @@ class Bert_model(nn.Module):
         elif conf.pretrained_model == "roberta":
             self.bert = RobertaModel.from_pretrained(
                 conf.model_size, cache_dir=conf.cache_dir)
+            
+        # Freeze the parameters of the pre-trained model
+        for param in self.bert.parameters():
+            param.requires_grad = False
 
         self.cls_prj = nn.Linear(hidden_size, hidden_size, bias=True)
         self.cls_dropout = nn.Dropout(dropout_rate)

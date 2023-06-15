@@ -66,9 +66,9 @@ valid_data, valid_examples, op_list, const_list = \
     read_examples(input_path=conf.valid_file, tokenizer=tokenizer,
                   op_list=op_list, const_list=const_list, log_file=log_file)
 
-test_data, test_examples, op_list, const_list = \
-    read_examples(input_path=conf.test_file, tokenizer=tokenizer,
-                  op_list=op_list, const_list=const_list, log_file=log_file)
+# test_data, test_examples, op_list, const_list = \
+#     read_examples(input_path=conf.test_file, tokenizer=tokenizer,
+#                   op_list=op_list, const_list=const_list, log_file=log_file)
 
 kwargs = {"examples": train_examples,
           "tokenizer": tokenizer,
@@ -82,8 +82,8 @@ train_features = convert_examples_to_features(**kwargs)
 kwargs["examples"] = valid_examples
 kwargs["is_training"] = False
 valid_features = convert_examples_to_features(**kwargs)
-kwargs["examples"] = test_examples
-test_features = convert_examples_to_features(**kwargs)
+# kwargs["examples"] = test_examples
+# test_features = convert_examples_to_features(**kwargs)
 
 
 def train():
@@ -115,6 +115,7 @@ def train():
     for _ in range(conf.epoch):
         train_iterator.reset()
         for x in train_iterator:
+            print(k)
 
             input_ids = torch.tensor(x['input_ids']).to(conf.device)
             input_mask = torch.tensor(x['input_mask']).to(conf.device)
